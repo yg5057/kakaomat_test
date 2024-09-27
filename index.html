@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kakao Map Example</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script type="text/javascript"
+        src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e289c41c9d490cb1d87341f1dd56d33b&libraries=services">
+        </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    <script defer src="main.js"></script>
+</head>
+
+<body>
+    <h2>경로 찾기</h2>
+    <form id="routeForm">
+        <label for="start">출발지: </label>
+        <input type="text" id="start" placeholder="출발지 주소" disabled required>
+        <br>
+        <label for="end">목적지: </label>
+        <input type="text" id="end" placeholder="목적지 주소" required>
+        <br>
+        <button type="submit">경로 찾기</button>
+    </form>
+
+    <div id="map"></div>
+    <div id="result"></div>
+    <div id="placeList">
+        <h3>장소 리스트</h3>
+        <ul id="places"></ul>
+    </div>
+
+    <div id="loadingModal">
+        <div id="loadingMessage">경로를 찾는 중입니다...</div>
+    </div>
+</body>
+<script src="places.json"></script>
+
+</html>

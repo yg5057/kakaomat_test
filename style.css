@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+#map {
+    width: 100%;
+    height: 500px;
+    border: 1px solid #ccc;
+}
+
+#result {
+    margin-top: 20px;
+}
+
+#placeList {
+    margin-top: 20px;
+}
+
+h2,
+h3 {
+    margin: 0;
+}
+
+.custom-marker {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    background-color: white;
+    border: 1px solid #d43429;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    pointer-events: all;
+}
+
+#loadingModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#loadingMessage {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+}
