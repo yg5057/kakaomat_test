@@ -74,7 +74,7 @@ input::placeholder {
 
 .toggleButton {
     position: absolute;
-    top: 15px;  
+    top: 10px;  
     left: 20px; 
     width: 40px;
     height: 40px;
@@ -95,8 +95,8 @@ input::placeholder {
 
 .mapNavBar_BG{
     display: flex;
-    height: 90%;
-    margin-top: 30px;
+    height: 95%;
+    margin-top: 35px;
     padding: 16px;
     flex-direction: column;
     align-items: flex-start;
