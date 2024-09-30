@@ -85,7 +85,7 @@ function displayPlaces() {
 
                 // 인포메이션 윈도우 생성
                 var infowindowContent = `
-                    <div class="marker-info">
+                    <div>
                         <span>${place.title}</span>
                         <br>
                         <a href="${place.url}" target="_blank">
@@ -196,16 +196,6 @@ function findRoute(startCoords, endCoords) {
                 </div>                
             `;
 
-            // 경로 표시
-            var path = route.sections[0].roads.reduce(function (acc, road) {
-                road.vertexes.forEach(function (vertex, index) {
-                    if (index % 2 === 0) {
-                        acc.push(new kakao.maps.LatLng(road.vertexes[index + 1], vertex));
-                    }
-                });
-                return acc;
-            }, []);
-
             // 기존 경로가 있을 경우 제거
             if (currentPolyline) {
                 currentPolyline.setMap(null);
@@ -227,23 +217,16 @@ function findRoute(startCoords, endCoords) {
             });
             map.setBounds(bounds);
 
-            // 목적지 마커 표시
-            var endAddress = document.getElementById('end').value; // 사용자가 입력한 목적지 주소
-            var destinationPlace = placesData.find(place => place.address === endAddress);
-
-            if (destinationPlace) {
-                if (destinationMarker) {
-                    destinationMarker.setMap(null); // 이전 마커 숨기기
-                } else {
-                    // 처음 목적지 마커 생성
-                    destinationMarker = new kakao.maps.Marker({
-                        position: endCoords // 목적지 좌표
-                    });
-                }
-                destinationMarker.setMap(map); // 목적지 마커 표시
-            } else {
-                alert('목적지 정보가 없습니다.');
+            // 기존 목적지 마커가 있으면 제거
+            if (destinationMarker) {
+                destinationMarker.setMap(null);
             }
+
+            // 새로운 목적지 마커 생성 및 표시
+            destinationMarker = new kakao.maps.Marker({
+                position: endCoords
+            });
+            destinationMarker.setMap(map);
         })
         .catch(error => {
             console.error('경로 검색 중 오류 발생:', error);
@@ -251,10 +234,12 @@ function findRoute(startCoords, endCoords) {
         });
 }
 
+// 로딩 모달 표시
 function showLoadingModal() {
-    document.getElementById('loadingModal').style.display = 'block';
+    document.getElementById('loadingModal').style.display = 'flex';
 }
 
+// 로딩 모달 숨기기
 function hideLoadingModal() {
     document.getElementById('loadingModal').style.display = 'none';
 }
