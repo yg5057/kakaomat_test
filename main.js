@@ -60,7 +60,15 @@ function displayPlaces() {
     var placesList = document.getElementById('places');
     placesData.forEach(function (place) {
         var li = document.createElement('li');
-        li.innerHTML = `<a href="#" onclick="setDestination('${place.title}', '${place.address}', '${place.url}')">${place.title}</a>`;
+        li.innerHTML = `
+            <div class="li-container" onclick="setDestination('${place.title}', '${place.address}', '${place.area}')">
+                <div class="li-eclipse">${place.area}</div>
+                <div class="li-textWrap">
+                    <div class="li-text-title">${place.title}</div>
+                    <div class="li-text-address">${place.address}</div>
+                </div>
+            </div>
+        `;
         placesList.appendChild(li);
 
         // 장소에 커스텀 마커 표시
@@ -176,8 +184,16 @@ function findRoute(startCoords, endCoords) {
 
             hideLoadingModal(); // 로딩 모달 숨김
 
-            document.getElementById('result').innerHTML =
-                `거리: ${(distance / 1000).toFixed(1)} km<br>소요시간: ${hours}시간 ${minutes}분`;
+            document.getElementById('result').innerHTML =`
+                <div class="cl-1-input ">
+                    <label class="cl-1-label">거리</label>
+                    <div class="cl-1-input-text">${(distance / 1000).toFixed(1)} km</div>
+                </div>
+                <div class="cl-1-input ">
+                    <label class="cl-1-label">시간</label>
+                    <div class="cl-1-input-text">${hours}시간 ${minutes}분</div>
+                </div>                
+            `;
 
             // 경로 표시
             var path = route.sections[0].roads.reduce(function (acc, road) {

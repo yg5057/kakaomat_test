@@ -1,0 +1,251 @@
+/* 리셋 CSS */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    position: relative;  
+    z-index: -1;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+input {
+    outline: none; 
+    border: none; 
+    background: none; 
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit; 
+}
+
+input::placeholder {
+    color: inherit; 
+    opacity: 0.7; 
+    font-size: 11px;
+}
+
+
+
+
+
+/* main.css */
+.mapSection {
+    display: flex;
+    width: 100%;
+    min-width: 767px;
+    height: 100%;
+    padding: 30px;
+    align-items: flex-start;
+    gap: 10px;
+    position: relative;  
+    z-index: 0; 
+}
+.mapNavBar_BG{
+    display: flex;
+    height: 100%;
+    padding: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 40px;
+    border-radius: 15px;
+    background: #FFFF;
+    box-shadow: 4px 4px 3px 0px rgba(0, 0, 0, 0.20);
+    position: relative;
+    z-index: 10; 
+}
+.mapNavBar_cl-1{
+    display: flex;
+    min-height: 106px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 8px;
+}
+.mapNavBar_cl-1 #result{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.cl-1-input {
+    display: flex;
+    width: 220px;
+    height: 30px;
+    padding: 6px 12px;
+    align-items: center;
+    gap: 8px;
+    border-radius: 20px;
+    border: 0.5px solid #8BC0FF;
+    background: #F4F8FF;
+}
+.cl-1-label{
+    width: 15%;
+    color: #476490;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+.cl-1-input-text{
+    width: 85%;
+    font-size: 11px;
+}
+.cl-1-btn{
+    display: flex;
+    width: 220px;
+    height: 30px;
+    padding: 6px 12px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 20px;
+    background: #248CFA;
+    box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+    color: #FFF;
+    font-family: Pretendard;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+
+.mapNavBar_cl-2{
+    display: flex;
+    height: 75%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+}
+
+.cl-2-search{
+    display: flex;
+    width: 220px;
+    height: 30px;
+    padding: 8px 16px;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 40px;
+    border: 1px solid rgba(27, 27, 27, 0.40);
+    background: #FFFF;
+}
+.list-wrap{
+    height: 100%;
+    overflow-y: scroll;
+
+}
+.li-container{
+    display: flex;
+    flex-direction: row;
+    width: 220px;
+    min-height: 65px;
+    padding: 10px;
+    align-items: center;
+    gap: 8px;
+    border-bottom: 1px solid rgba(27, 27, 27, 0.40);
+    background: #FFFF;
+    cursor: pointer;
+}
+.li-eclipse{
+    display: flex;
+    width: 45px;
+    height: 45px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 50px;
+    background: #248CFA;
+    color: #FFF;
+    text-align: center;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+.li-textWrap{
+    display: flex;
+    width: 72%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+}
+.li-text-title{
+    color: #1B1B1B;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+.li-text-address{
+    color: #1B1B1B;
+    font-family: Pretendard;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+
+
+
+
+
+
+#loadingModal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+#loadingMessage {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    text-align: center;
+}
+
+
+
+

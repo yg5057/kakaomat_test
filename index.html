@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kakao Map Example</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <script type="text/javascript"
         src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e289c41c9d490cb1d87341f1dd56d33b&libraries=services">
@@ -15,27 +15,38 @@
 </head>
 
 <body>
-    <h2>경로 찾기</h2>
-    <form id="routeForm">
-        <label for="start">출발지: </label>
-        <input type="text" id="start" placeholder="출발지 주소" disabled required>
-        <br>
-        <label for="end">목적지: </label>
-        <input type="text" id="end" placeholder="목적지 주소" required>
-        <br>
-        <button type="submit">경로 찾기</button>
-    </form>
 
-    <div id="map"></div>
-    <div id="result"></div>
-    <div id="placeList">
-        <h3>장소 리스트</h3>
-        <ul id="places"></ul>
-    </div>
+    <section id="map" class="mapSection">
+        <nav class="mapNavBar_BG">
+            <form id="routeForm">
+                <div class="mapNavBar_cl-1">
+                    <div class="cl-1-input ">
+                        <label class="cl-1-label" for="start">출발</label>
+                        <input class="cl-1-input-text" type="text" id="start" placeholder="정확한 도로명 주소를 입력해주세요." disabled
+                            required>
+                    </div>
+                    <div class="cl-1-input ">
+                        <label class="cl-1-label" for="end">도착</label>
+                        <input class="cl-1-input-text" type="text" id="end" placeholder="리스트에서 장소를 선택해주세요." required
+                            readonly>
+                    </div>
+                    <div id="result"></div>
+                    <button class="cl-1-btn" type="submit">경로 찾기</button>
+                </div>
+            </form>
 
-    <div id="loadingModal">
+            <div id="placeList" class="mapNavBar_cl-2">
+                <div class="cl-2-search"></div>
+                <ul id="places" class="list-wrap">
+                </ul>
+            </div>
+        </nav>
+    </section>
+
+
+    <modal id="loadingModal">
         <div id="loadingMessage">경로를 찾는 중입니다...</div>
-    </div>
+    </modal>
 </body>
 <script src="places.json"></script>
 
