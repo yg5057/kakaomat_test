@@ -253,9 +253,6 @@ input::placeholder {
     width: 150px;
     height: 100px;
     padding: 16px;
-}
-
-.marker-info-text{
     color: #1B1B1B;
     font-family: Pretendard;
     font-size: 12px;
@@ -263,7 +260,6 @@ input::placeholder {
     font-weight: 400;
     line-height: normal;
 }
-
 
 
 
