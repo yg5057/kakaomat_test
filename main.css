@@ -1,3 +1,5 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
+
 /* 리셋 CSS */
 * {
     margin: 0;
@@ -7,10 +9,11 @@
 
 html, body {
     height: 100%;
+    font-family: 'Pretendard', sans-serif;
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Pretendard', sans-serif;
     line-height: 1.6;
     margin: 0;
     position: relative;  
@@ -68,9 +71,32 @@ input::placeholder {
     position: relative;  
     z-index: 0; 
 }
+
+.toggleButton {
+    position: absolute;
+    top: 20px;  /* 화면 상단에서 20px */
+    left: 20px; /* 왼쪽에서 20px */
+    width: 40px;
+    height: 40px;
+    background-color: #248CFA;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    z-index: 10000; 
+}
+
+.toggleButton i {
+    font-size: 20px;
+}
+
 .mapNavBar_BG{
     display: flex;
-    height: 100%;
+    height: 90%;
+    margin-top: 30px;
     padding: 16px;
     flex-direction: column;
     align-items: flex-start;

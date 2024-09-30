@@ -17,7 +17,11 @@
 <body>
 
     <section id="map" class="mapSection">
-        <nav class="mapNavBar_BG">
+        <div class="toggleButton" id="toggleButton">
+            <i class="fas fa-bar"></i>
+        </div>
+
+        <nav class="mapNavBar_BG" id="navBar">
             <form id="routeForm">
                 <div class="mapNavBar_cl-1">
                     <div class="cl-1-input ">
@@ -36,18 +40,34 @@
             </form>
 
             <div id="placeList" class="mapNavBar_cl-2">
-                <!-- <div class="cl-2-search"></div> -->
-                <ul id="places" class="list-wrap">
-                </ul>
+                <ul id="places" class="list-wrap"></ul>
             </div>
         </nav>
     </section>
 
-
     <modal id="loadingModal">
         <div id="loadingMessage">경로를 찾는 중입니다...</div>
     </modal>
+
+    <script src="places.json"></script>
+
+    <script>
+        const toggleButton = document.getElementById('toggleButton');
+        const navBar = document.getElementById('navBar');
+        let isNavBarVisible = true;
+
+        toggleButton.addEventListener('click', function () {
+            if (isNavBarVisible) {
+                navBar.style.display = 'none';
+                toggleButton.innerHTML = '<i class="fas fa-bar"></i>';
+            } else {
+                navBar.style.display = 'flex';
+                toggleButton.innerHTML = '<i class="fas fa-bar"></i>';
+            }
+            isNavBarVisible = !isNavBarVisible;
+        });
+    </script>
+
 </body>
-<script src="places.json"></script>
 
 </html>
