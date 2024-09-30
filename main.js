@@ -175,7 +175,7 @@ function displayPlaces() {
     
         fetch(apiUrl, {
             headers: {
-                "Authorization": "KakaoAK 5f3a86657677b5b744ca1caf6af2ddf9"
+                "Authorization": "KakaoAK 8e2c134c22f8c379da88ce3fc7bc85a4"
             }
         })
         .then(response => response.json())
