@@ -84,12 +84,13 @@ function displayPlaces() {
 
                 // 인포메이션 윈도우 생성
                 var infowindowContent = `
-                    <div>
-                        <span>${place.title}</span>
-                        <br>
-                        <a href="${place.url}" target="_blank">
-                            <i class="fas fa-chevron-right"></i>
-                        </a>
+                    <div class="marker-info">
+                        <span class="marker-info-text'>
+                            ${place.title}
+                            <a href="${place.url}" target="_blank">
+                                <i class="fas fa-chevron-right"></i>
+                            </a>
+                        </span>
                     </div>
                 `;
                 var infowindow = new kakao.maps.InfoWindow({
