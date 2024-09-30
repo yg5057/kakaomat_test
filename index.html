@@ -18,7 +18,7 @@
 
     <section id="map" class="mapSection">
         <div class="toggleButton" id="toggleButton">
-            <i class="fas fa-bar"></i>
+            <i class="fas fa-bars"></i>
         </div>
 
         <nav class="mapNavBar_BG" id="navBar">
@@ -59,10 +59,10 @@
         toggleButton.addEventListener('click', function () {
             if (isNavBarVisible) {
                 navBar.style.display = 'none';
-                toggleButton.innerHTML = '<i class="fas fa-bar"></i>';
+                toggleButton.innerHTML = '<i class="fas fa-bars"></i>';
             } else {
                 navBar.style.display = 'flex';
-                toggleButton.innerHTML = '<i class="fas fa-bar"></i>';
+                toggleButton.innerHTML = '<i class="fas fa-bars"></i>';
             }
             isNavBarVisible = !isNavBarVisible;
         });
