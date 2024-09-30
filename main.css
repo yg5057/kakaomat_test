@@ -96,7 +96,7 @@ input::placeholder {
 .mapNavBar_BG{
     display: flex;
     height: 95%;
-    margin-top: 35px;
+    margin-top: 40px;
     padding: 16px;
     flex-direction: column;
     align-items: flex-start;
