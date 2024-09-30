@@ -85,9 +85,8 @@ function displayPlaces() {
 
                 // 인포메이션 윈도우 생성
                 var infowindowContent = `
-                    <div>
-                        <span>${place.title}</span>
-                        <br>
+                    <div class="marker-info">
+                        <span>${place.title} </span>
                         <a href="${place.url}" target="_blank">
                             <i class="fas fa-chevron-right"></i>
                         </a>
