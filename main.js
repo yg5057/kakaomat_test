@@ -12,6 +12,7 @@ var map = new kakao.maps.Map(mapContainer, mapOption);
 var geocoder = new kakao.maps.services.Geocoder();
 var placeMarkers = []; // 마커를 저장할 배열
 var destinationMarker = null; // 목적지 마커 초기값 null로 설정
+var currentPolyline = null; // 현재 표시된 Polyline을 저장할 변수
 
 // JSON 데이터 불러오기
 fetch('places.json')
@@ -84,12 +85,12 @@ function displayPlaces() {
 
                 // 인포메이션 윈도우 생성
                 var infowindowContent = `
-                    <div>
-                        <span>${place.title}
-                            <a href="${place.url}" target="_blank">
-                                <i class="fas fa-chevron-right"></i>
-                            </a>
-                        </span>
+                    <div class="marker-info">
+                        <span>${place.title}</span>
+                        <br>
+                        <a href="${place.url}" target="_blank">
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
                     </div>
                 `;
                 var infowindow = new kakao.maps.InfoWindow({
@@ -205,13 +206,19 @@ function findRoute(startCoords, endCoords) {
                 return acc;
             }, []);
 
-            var polyline = new kakao.maps.Polyline({
+            // 기존 경로가 있을 경우 제거
+            if (currentPolyline) {
+                currentPolyline.setMap(null);
+            }
+
+            // 새로운 Polyline 생성
+            currentPolyline = new kakao.maps.Polyline({
                 path: path,
                 strokeWeight: 6,
                 strokeColor: '#00BFFF',
                 strokeOpacity: 0.8
             });
-            polyline.setMap(map);
+            currentPolyline.setMap(map);
 
             // 지도의 범위를 경로에 맞게 조정
             var bounds = new kakao.maps.LatLngBounds();
@@ -245,7 +252,7 @@ function findRoute(startCoords, endCoords) {
 }
 
 function showLoadingModal() {
-    document.getElementById('loadingModal').style.display = 'flex';
+    document.getElementById('loadingModal').style.display = 'block';
 }
 
 function hideLoadingModal() {
