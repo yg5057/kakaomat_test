@@ -56,6 +56,50 @@ if (navigator.geolocation) {
     document.getElementById('start').disabled = false;
 }
 
+
+//// 추가
+// 지역에 따른 마커 색상 설정 함수
+function getMarkerImage(area) {
+    var imageSrc;
+    var imageSize = new kakao.maps.Size(30, 40);
+
+    // 지역에 따른 마커 이미지 변경
+    if (area === '강원') {
+        imageSrc = 'images/강원.png'; 
+    } else if (area === '경기') {
+        imageSrc = 'images/경기.png'; 
+    } else if (area === '경남') {
+        imageSrc = 'images/경남.png'; 
+    } else if (area === '경북') {
+        imageSrc = 'images/경북.png'; 
+    } else if (area === '광주') {
+        imageSrc = 'images/광주.png'; 
+    } else if (area === '대구') {
+        imageSrc = 'images/대구.png'; 
+    } else if (area === '부산') {
+        imageSrc = 'images/부산.png'; 
+    } else if (area === '세종') {
+        imageSrc = 'images/세종.png'; 
+    } else if (area === '울산') {
+        imageSrc = 'images/울산.png'; 
+    } else if (area === '인천') {
+        imageSrc = 'images/인천.png'; 
+    } else if (area === '전남') {
+        imageSrc = 'images/전남.png'; 
+    } else if (area === '전북') {
+        imageSrc = 'images/전북.png'; 
+    } else if (area === '충남') {
+        imageSrc = 'images/충남.png'; 
+    } else if (area === '충북') {
+        imageSrc = 'images/충북.png'; 
+    } 
+    else {
+        imageSrc = 'https://t1.daumcdn.net/mapjsapi/images/2x/marker.png'; 
+    }
+
+    return new kakao.maps.MarkerImage(imageSrc, imageSize);
+}
+
 // 장소 리스트 표시 함수
 function displayPlaces(places) {
     var placesList = document.getElementById('places');
@@ -81,7 +125,8 @@ function displayPlaces(places) {
     
                     // 기본 마커 생성
                     var placeMarker = new kakao.maps.Marker({
-                        position: coords
+                        position: coords,
+                        image: getMarkerImage(place.area) // 지역에 따른 마커 색상 적용
                     });
                     placeMarker.setMap(map);
     
