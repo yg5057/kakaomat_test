@@ -26,12 +26,12 @@
                 <div class="mapNavBar_cl-1">
                     <div class="cl-1-input ">
                         <label class="cl-1-label" for="start">출발</label>
-                        <input class="cl-1-input-text" type="text" id="start" placeholder="정확한 도로명 주소를 입력해주세요." disabled
-                            required>
+                        <input class="cl-1-input-text" type="text" id="start" placeholder="정확한 도로명 주소를 입력해 주세요."
+                            disabled required>
                     </div>
                     <div class="cl-1-input ">
                         <label class="cl-1-label" for="end">도착</label>
-                        <input class="cl-1-input-text" type="text" id="end" placeholder="리스트에서 장소를 선택해주세요." required
+                        <input class="cl-1-input-text" type="text" id="end" placeholder="리스트에서 장소를 선택해 주세요." required
                             readonly>
                     </div>
                     <div id="result"></div>
@@ -40,6 +40,10 @@
             </form>
 
             <div id="placeList" class="mapNavBar_cl-2">
+                <div class="cl-2-searchBar">
+                    <input type="text" id="searchInput" placeholder="장례식장 이름을 검색해 주세요.">
+                    <i class="fas fa-search"></i>
+                </div>
                 <ul id="places" class="list-wrap"></ul>
             </div>
         </nav>
