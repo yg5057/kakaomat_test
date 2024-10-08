@@ -100,11 +100,30 @@ function displayPlaces(places) {
     var placesList = document.getElementById('places');
     placesList.innerHTML = ''; // 기존 리스트 초기화
 
+       // 지역에 따른 색상 정의
+       const areaColors = {
+        '강원': '#FF66C4',
+        '경기': '#10C0DF',
+        '경남': '#D9BD4C',
+        '경북': '#004AAD',
+        '광주': '#FF5758',
+        '대구': '#004AAD',
+        '부산': '#D9BD4C',
+        '세종': '#58CD94',
+        '울산': '#D9BD4C',
+        '인천': '#10C0DF',
+        '전남': '#FF5758',
+        '전북': '#FF5758',
+        '충남': '#58CD94',
+        '충북': '#58CD94'
+    };
+
     places.forEach(function (place) {
         var li = document.createElement('li');
+        var color = areaColors[place.area] || '#248CFA'; // 기본 색상 (검정)
         li.innerHTML = `
             <div class="li-container" onclick="setDestination('${place.title}', '${place.address}', '${place.url}', '${place.area}')">
-                <div class="li-eclipse">${place.area}</div>
+                <div class="li-eclipse" style="background-color: ${color};">${place.area}</div>
                 <div class="li-textWrap">
                     <div class="li-text-title">${place.title}</div>
                     <div class="li-text-address">${place.address}</div>
