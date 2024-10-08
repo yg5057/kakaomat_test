@@ -13,6 +13,7 @@ var geocoder = new kakao.maps.services.Geocoder();
 var placeMarkers = []; // 마커를 저장할 배열
 var destinationMarker = null; // 목적지 마커 초기값 null로 설정
 var currentPolyline = null; // 현재 표시된 경로 Polyline을 저장할 변수
+var currentInfowindow = null; // 현재 열려 있는 인포메이션 윈도우를 저장할 변수
 
 // JSON 데이터 불러오기
 fetch('places.json')
@@ -82,6 +83,18 @@ function getMarkerImage(area) {
     return new kakao.maps.MarkerImage(imageSrc, imageSize);
 }
 
+
+// 기존 인포메이션 윈도우 대신 사용할 커스텀 오버레이 생성 함수
+function createCustomOverlay(content) {
+    var overlay = new kakao.maps.CustomOverlay({
+        content: content,
+        position: null, // 초기 위치는 설정하지 않음
+        yAnchor: 1 // 위치를 마커 위에 맞춤
+    });
+    return overlay;
+}
+
+
 // 장소 리스트 표시 함수
 function displayPlaces(places) {
     var placesList = document.getElementById('places');
@@ -90,7 +103,7 @@ function displayPlaces(places) {
     places.forEach(function (place) {
         var li = document.createElement('li');
         li.innerHTML = `
-            <div class="li-container" onclick="setDestination('${place.title}', '${place.address}', '${place.area}')">
+            <div class="li-container" onclick="setDestination('${place.title}', '${place.address}', '${place.url}', '${place.area}')">
                 <div class="li-eclipse">${place.area}</div>
                 <div class="li-textWrap">
                     <div class="li-text-title">${place.title}</div>
@@ -112,38 +125,48 @@ function displayPlaces(places) {
                     });
                     placeMarker.setMap(map);
     
-                    // 인포메이션 윈도우 생성
-                    var infowindowContent = `
-                    <div class="marker-info">    
-                        <div>
-                            <span>${place.title}&nbsp;&nbsp;                             
-                                <a href="${place.url}" target="_blank">
-                                    <i class="fas fa-chevron-right"></i>
-                                </a>
-                            </span>
+
+                // 커스텀 오버레이 내용
+                var overlayContent = `
+                    <div class="overlay_info">
+                        <a href="${place.url}" target="_blank">
+                            <strong>${place.title}</strong>
+                        </a>
+                        <div class="desc">
+                            <span class="address">${place.address}</span>
                         </div>
+                        <button class="close-btn" onclick="closeOverlay(event)">닫기</button>
                     </div>
-                    `;
-                    var infowindow = new kakao.maps.InfoWindow({
-                        content: infowindowContent,
-                        removable: true
-                    });
-    
-                    // 마커 클릭 시 인포메이션 윈도우 열기
-                    kakao.maps.event.addListener(placeMarker, 'click', function () {
-                        infowindow.open(map, placeMarker);
-                    });
-    
-                    // 마커 클릭 시 목적지 설정
-                    kakao.maps.event.addListener(placeMarker, 'click', function () {
-                        setDestination(place.title, place.address, place.url);
-                    });
-    
-                    placeMarkers.push(placeMarker); // 마커 배열에 추가
+                `;
+                var overlay = createCustomOverlay(overlayContent);
+
+            // 마커 클릭 시 커스텀 오버레이 표시
+            kakao.maps.event.addListener(placeMarker, 'click', function () {
+                overlay.setPosition(placeMarker.getPosition()); // 마커 위치에 오버레이 위치 설정
+                overlay.setMap(map); // 오버레이 지도에 표시
+                setDestination(place.title, place.address, place.url);
+
+          // 기존 커스텀 오버레이가 열려 있으면 닫기
+                    if (currentInfowindow) {
+                        currentInfowindow.setMap(null);
+                    }
+                    currentInfowindow = overlay; // 현재 열려 있는 커스텀 오버레이를 저장
+                });
+            placeMarkers.push(placeMarker); // 마커 배열에 추가
                 }
             });
         });
     }
+
+
+// 커스텀 오버레이 닫기 함수
+function closeOverlay(event) {
+    event.stopPropagation(); // 클릭 이벤트 전파 방지
+    if (currentInfowindow) {
+        currentInfowindow.setMap(null); // 오버레이 닫기
+        currentInfowindow = null; // 현재 오버레이 초기화
+    }
+}
     // 검색 기능 추가
     document.getElementById('searchInput').addEventListener('input', function () {
         var query = this.value.toLowerCase(); // 입력값을 소문자로 변환하여 검색
@@ -172,7 +195,7 @@ function displayPlaces(places) {
         }
     });
     
-    var currentInfowindow = null; // 현재 열려 있는 인포메이션 윈도우를 저장할 변수
+ var currentInfowindow = null; // 현재 열려 있는 인포메이션 윈도우를 저장할 변수
 
    // 목적지 설정 함수
 function setDestination(title, address, url) {
@@ -198,35 +221,30 @@ function setDestination(title, address, url) {
             // 지도를 해당 장소로 이동
             map.setCenter(coords);
 
-            // 마커 인포메이션 윈도우 내용
-            var infowindowContent = `
-                <div class="marker-info">    
-                    <div>
-                        <span>${title}&nbsp;&nbsp;
-                            <a href="${url}" target="_blank">
-                                <i class="fas fa-chevron-right"></i>
-                            </a>
-                        </span>
+            // 커스텀 오버레이 내용
+            var overlayContent = `
+                  <div class="overlay_info">
+                        <a href="${url}" target="_blank">
+                            <strong>${title}</strong>
+                        </a>
+                        <div class="desc">
+                            <span class="address">${address}</span>
+                            <button class="close-btn" onclick="closeOverlay(event)">
+                                <i class="fas fa-times"></i> <!-- FontAwesome X 아이콘 -->
+                            </button>
+                        </div>
                     </div>
-                </div>
             `;
-
-            // 인포메이션 윈도우 생성
-            var infowindow = new kakao.maps.InfoWindow({
-                content: infowindowContent,
-                removable: true // 윈도우 닫기 버튼 추가
-            });
-
-            // 이전 인포메이션 윈도우가 열려 있으면 닫기
-            if (currentInfowindow) {
-                currentInfowindow.close();
+              // 기존 커스텀 오버레이가 열려 있으면 닫기
+              if (currentInfowindow) {
+                currentInfowindow.setMap(null);
             }
 
-            // 인포메이션 윈도우를 새로운 목적지 마커 위에 표시
-            infowindow.open(map, destinationMarker);
-
-            // 현재 열려 있는 인포메이션 윈도우를 저장
-            currentInfowindow = infowindow;
+            // 새로운 커스텀 오버레이 생성
+            var overlay = createCustomOverlay(overlayContent);
+            overlay.setPosition(destinationMarker.getPosition()); // 마커 위치에 오버레이 위치 설정
+            overlay.setMap(map); // 오버레이 지도에 표시
+            currentInfowindow = overlay; // 현재 열려 있는 커스텀 오버레이를 저장
 
             // 경로 UI를 초기화하고 숨기기
             if (currentPolyline) {
@@ -240,7 +258,16 @@ function setDestination(title, address, url) {
     });
 }
 
-    
+  // 커스텀 오버레이 생성 함수
+function createCustomOverlay(content) {
+    var overlay = new kakao.maps.CustomOverlay({
+        content: content,
+        map: map,
+        position: new kakao.maps.LatLng(0, 0), // 초기 위치는 임의로 설정
+        yAnchor: 1 // 커스텀 오버레이가 마커의 아래쪽에 위치하도록 설정
+    });
+    return overlay;
+}  
 
 
     // 경로 검색 함수
@@ -368,3 +395,5 @@ function setDestination(title, address, url) {
         document.getElementById('loadingModal').style.display = 'none';
     }
     
+
+

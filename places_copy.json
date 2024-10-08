@@ -1,0 +1,54 @@
+[
+    {
+        "title": "강릉 펫사랑",
+        "address": "강원 강릉시 사천면 구라미길 376",
+        "url": "https://www.rainbowstar.shop/board/free/list.html?board_no=19&category_no=1",
+        "area": "강원",
+        "info": "예약가능 / 픽업가능",
+        "score": "5.0",
+        "review": {
+            "review_url1": "https://blog.naver.com/rladuswjd24/223388631178",
+            "review_url2": "https://blog.naver.com/kkyungmi_kim/223283954300",
+            "review_url3": "https://blog.naver.com/jisangstory/223230152840"
+        }
+    },
+    {
+        "title": "주식회사 패투헤븐",
+        "address": "강원 원주시 소초면 현촌길 90-3",
+        "url": "https://www.rainbowstar.shop/board/free/list.html?board_no=19&category_no=2",
+        "area": "강원",
+        "info": "예약가능 / 픽업가능",
+        "score": "4.0",
+        "review": {
+            "review_url1": "https://blog.naver.com/pettoheaven/223610777747",
+            "review_url2": "https://blog.naver.com/pettoheaven/223609656140",
+            "review_url3": "https://blog.naver.com/pettoheaven/223609654833"
+        }
+    },
+    {
+        "title": "펫 메모리얼",
+        "address": "강원 횡성군 공근면 경강로초원6길 58",
+        "url": "https://www.rainbowstar.shop/board/free/list.html?board_no=19&category_no=3",
+        "area": "강원",
+        "info": "예약가능 / 픽업가능",
+        "score": "3.0",
+        "review": {
+            "review_url1": "https://blog.naver.com/happy23sa/222907930450",
+            "review_url2": "",
+            "review_url3": ""
+        }
+    },
+    {
+        "title": "㈜펫바라기",
+        "address": "경기 고양시 일산동구 설문동 은마길 63번길 25-2",
+        "url": "https://www.rainbowstar.shop/board/free/list.html?board_no=14&category_no=1",
+        "area": "경기",
+        "info": "예약가능 / 픽업가능",
+        "score": "2.0",
+        "review": {
+            "review_url1": "https://blog.naver.com/speeddog3/223539077891",
+            "review_url2": "https://blog.naver.com/whwnsdud4/223528815521",
+            "review_url3": "https://blog.naver.com/huyp123/223528752414"
+        }
+    }
+]
