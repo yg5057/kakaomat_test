@@ -65,33 +65,33 @@ function getMarkerImage(area) {
 
     // 지역에 따른 마커 이미지 변경
     if (area === '강원') {
-        imageSrc = 'images/강원.png'; 
+        imageSrc = 'images/pink.png'; 
     } else if (area === '경기') {
-        imageSrc = 'images/경기.png'; 
+        imageSrc = 'images/skyblue.png'; 
     } else if (area === '경남') {
-        imageSrc = 'images/경남.png'; 
+        imageSrc = 'images/yellow.png'; 
     } else if (area === '경북') {
-        imageSrc = 'images/경북.png'; 
+        imageSrc = 'images/blue.png'; 
     } else if (area === '광주') {
-        imageSrc = 'images/광주.png'; 
+        imageSrc = 'images/red.png'; 
     } else if (area === '대구') {
-        imageSrc = 'images/대구.png'; 
+        imageSrc = 'images/blue.png'; 
     } else if (area === '부산') {
-        imageSrc = 'images/부산.png'; 
+        imageSrc = 'images/yellow.png'; 
     } else if (area === '세종') {
-        imageSrc = 'images/세종.png'; 
+        imageSrc = 'images/green.png'; 
     } else if (area === '울산') {
-        imageSrc = 'images/울산.png'; 
+        imageSrc = 'images/yellow.png'; 
     } else if (area === '인천') {
-        imageSrc = 'images/인천.png'; 
+        imageSrc = 'images/skyblue.png'; 
     } else if (area === '전남') {
-        imageSrc = 'images/전남.png'; 
+        imageSrc = 'images/red.png'; 
     } else if (area === '전북') {
-        imageSrc = 'images/전북.png'; 
+        imageSrc = 'images/green.png'; 
     } else if (area === '충남') {
-        imageSrc = 'images/충남.png'; 
+        imageSrc = 'images/green.png'; 
     } else if (area === '충북') {
-        imageSrc = 'images/충북.png'; 
+        imageSrc = 'images/green.png'; 
     } 
     else {
         imageSrc = 'https://t1.daumcdn.net/mapjsapi/images/2x/marker.png'; 
