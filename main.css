@@ -317,8 +317,8 @@ input::placeholder {
 
 .overlay_info a {
     display: block;
-    background: #d95050;
-    background: #d95050 url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;
+    background: #509DEF;
+    background: #509DEF url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;
     text-decoration: none;
     color: #fff;
     padding: 12px 36px 12px 14px;
@@ -335,7 +335,7 @@ input::placeholder {
     padding: 14px;
     position: relative;
     min-width: 190px;
-    height: 56px
+    height: fit-content;
 }
 
 .overlay_info .address {
