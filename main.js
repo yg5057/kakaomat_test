@@ -72,7 +72,7 @@ function getMarkerImage(area) {
         '울산': 'images/yellow.png',
         '인천': 'images/skyblue.png',
         '전남': 'images/red.png',
-        '전북': 'images/green.png',
+        '전북': 'images/red.png',
         '충남': 'images/green.png',
         '충북': 'images/green.png'
     };
