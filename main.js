@@ -57,45 +57,27 @@ if (navigator.geolocation) {
 }
 
 
-//// 추가
 // 지역에 따른 마커 색상 설정 함수
 function getMarkerImage(area) {
-    var imageSrc;
-    var imageSize = new kakao.maps.Size(30, 40);
+    var areaImages = {
+        '강원': 'images/pink.png',
+        '경기': 'images/skyblue.png',
+        '경남': 'images/yellow.png',
+        '경북': 'images/blue.png',
+        '광주': 'images/red.png',
+        '대구': 'images/blue.png',
+        '부산': 'images/yellow.png',
+        '세종': 'images/green.png',
+        '울산': 'images/yellow.png',
+        '인천': 'images/skyblue.png',
+        '전남': 'images/red.png',
+        '전북': 'images/green.png',
+        '충남': 'images/green.png',
+        '충북': 'images/green.png'
+    };
 
-    // 지역에 따른 마커 이미지 변경
-    if (area === '강원') {
-        imageSrc = 'images/pink.png'; 
-    } else if (area === '경기') {
-        imageSrc = 'images/skyblue.png'; 
-    } else if (area === '경남') {
-        imageSrc = 'images/yellow.png'; 
-    } else if (area === '경북') {
-        imageSrc = 'images/blue.png'; 
-    } else if (area === '광주') {
-        imageSrc = 'images/red.png'; 
-    } else if (area === '대구') {
-        imageSrc = 'images/blue.png'; 
-    } else if (area === '부산') {
-        imageSrc = 'images/yellow.png'; 
-    } else if (area === '세종') {
-        imageSrc = 'images/green.png'; 
-    } else if (area === '울산') {
-        imageSrc = 'images/yellow.png'; 
-    } else if (area === '인천') {
-        imageSrc = 'images/skyblue.png'; 
-    } else if (area === '전남') {
-        imageSrc = 'images/red.png'; 
-    } else if (area === '전북') {
-        imageSrc = 'images/green.png'; 
-    } else if (area === '충남') {
-        imageSrc = 'images/green.png'; 
-    } else if (area === '충북') {
-        imageSrc = 'images/green.png'; 
-    } 
-    else {
-        imageSrc = 'https://t1.daumcdn.net/mapjsapi/images/2x/marker.png'; 
-    }
+    var imageSrc = areaImages[area] || 'https://t1.daumcdn.net/mapjsapi/images/2x/marker.png'; 
+    var imageSize = new kakao.maps.Size(30, 40);
 
     return new kakao.maps.MarkerImage(imageSrc, imageSize);
 }
