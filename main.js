@@ -122,7 +122,7 @@ function displayPlaces(places) {
         var li = document.createElement('li');
         var color = areaColors[place.area] || '#248CFA'; // 기본 색상 (검정)
         li.innerHTML = `
-            <div class="li-container" onclick="setDestination('${place.title}', '${place.address}', '${place.url}', '${place.area}')">
+            <div class="li-container" onclick="setDestination('${place.title}', '${place.address}', '${place.url}', '${place.area}', '${place.info}' )">
                 <div class="li-eclipse" style="background-color: ${color};">${place.area}</div>
                 <div class="li-textWrap">
                     <div class="li-text-title">${place.title}</div>
@@ -148,13 +148,32 @@ function displayPlaces(places) {
                 // 커스텀 오버레이 내용
                 var overlayContent = `
                     <div class="overlay_info">
-                        <a href="${place.url}" target="_blank">
+                        <span class="listTitleWrap">
                             <strong>${place.title}</strong>
-                        </a>
+                        </span>
                         <div class="desc">
-                            <span class="address">${place.address}</span>
+                            <button class="close-btn" onclick="closeOverlay(event)">
+                                <i class="fas fa-times"></i>
+                            </button>
+                            <div class="listConts-top">
+                                <span>상세정보</span>
+                                <a href="${place.url}" target="_blank">
+                                    <p>평점 / 후기 보기
+                                        <i class="fas fa-arrow-circle-right"></i>
+                                    </p>
+                                </a>
+                            </div>
+                            <div class="listConts-btm">
+                                <span class="listConts-info">
+                                    <i class="fas fa-map-marked-alt" style="color: #54545480"></i>
+                                    ${place.address}
+                                </span>
+                                <span class="listConts-info">
+                                    <i class="fas fa-info-circle" style="color: #54545480"></i>
+                                    ${place.info}
+                                </span>
+                            </div>
                         </div>
-                        <button class="close-btn" onclick="closeOverlay(event)">닫기</button>
                     </div>
                 `;
                 var overlay = createCustomOverlay(overlayContent);
@@ -163,7 +182,7 @@ function displayPlaces(places) {
             kakao.maps.event.addListener(placeMarker, 'click', function () {
                 overlay.setPosition(placeMarker.getPosition()); // 마커 위치에 오버레이 위치 설정
                 overlay.setMap(map); // 오버레이 지도에 표시
-                setDestination(place.title, place.address, place.url);
+                setDestination(place.title, place.address, place.url, place.area, place.info);
 
           // 기존 커스텀 오버레이가 열려 있으면 닫기
                     if (currentInfowindow) {
@@ -217,7 +236,7 @@ function closeOverlay(event) {
  var currentInfowindow = null; // 현재 열려 있는 인포메이션 윈도우를 저장할 변수
 
    // 목적지 설정 함수
-function setDestination(title, address, url) {
+function setDestination(title, address, url, area, info) {
     // 목적지 입력 필드에 주소 입력
     document.getElementById('end').value = address;
 
@@ -242,17 +261,34 @@ function setDestination(title, address, url) {
 
             // 커스텀 오버레이 내용
             var overlayContent = `
-                  <div class="overlay_info">
-                        <a href="${url}" target="_blank">
-                            <strong>${title}</strong>
-                        </a>
-                        <div class="desc">
-                            <span class="address">${address}</span>
-                            <button class="close-btn" onclick="closeOverlay(event)">
-                                <i class="fas fa-times"></i> <!-- FontAwesome X 아이콘 -->
-                            </button>
+                <div class="overlay_info">
+                    <span class="listTitleWrap">
+                        <strong>${title}</strong>
+                    </span>
+                    <div class="desc">
+                        <button class="close-btn" onclick="closeOverlay(event)">
+                            <i class="fas fa-times"></i>
+                        </button>
+                        <div class="listConts-top">
+                            <span>상세정보</span>
+                            <a href="${url}" target="_blank">
+                                <p>평점 / 후기 보기
+                                    <i class="fas fa-arrow-circle-right"></i>
+                                </p>
+                            </a>
+                        </div>
+                        <div class="listConts-btm">
+                            <span class="listConts-info">
+                                <i class="fas fa-map-marked-alt" style="color: #54545480"></i>
+                                ${address}
+                            </span>
+                            <span class="listConts-info">
+                                <i class="fas fa-info-circle" style="color: #54545480"></i>
+                                ${info}
+                            </span>
                         </div>
                     </div>
+                </div>
             `;
               // 기존 커스텀 오버레이가 열려 있으면 닫기
               if (currentInfowindow) {

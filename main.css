@@ -299,7 +299,6 @@ input::placeholder {
 
 
 
-
 .overlay_info {
     border-radius: 6px;
     margin-bottom: 12px;
@@ -315,10 +314,10 @@ input::placeholder {
     box-shadow: 0px 1px 2px #888;
 }
 
-.overlay_info a {
+.overlay_info .listTitleWrap {
     display: block;
     background: #509DEF;
-    background: #509DEF url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;
+    /* background: #509DEF url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center; */
     text-decoration: none;
     color: #fff;
     padding: 12px 36px 12px 14px;
@@ -326,33 +325,84 @@ input::placeholder {
     border-radius: 6px 6px 0 0
 }
 
-.overlay_info a strong {
+.overlay_info .listTitleWrap strong {
     background: url(./images/paw_icon.png) no-repeat;
     padding-left: 27px;
 }
 
 .overlay_info .desc {
+    width: fit-content;
+    min-width: 250px;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 8px;
     padding: 14px;
     position: relative;
-    min-width: 190px;
-    height: fit-content;
-}
-
-.overlay_info .address {
-    font-size: 12px;
-    color: #333;
-    white-space: normal;
 }
 
 .overlay_info .close-btn {
     position: absolute;
-    top: 10px; /* 상단에서 10px 떨어진 위치 */
-    right: 10px; /* 오른쪽에서 10px 떨어진 위치 */
+    top: 10px; 
+    right: 10px; 
     background: none;
     border: none;
     color: #333;
     cursor: pointer;
 }
+
+.listConts-top{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 2px;
+}
+
+.listConts-top span{
+    color: #375E99;
+    font-family: Pretendard;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.listConts-top a{
+    color: #375E99;
+    font-family: Pretendard;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.listConts-btm{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 4px;
+}
+
+.listConts-btm .listConts-info{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 8px;
+    color: #1B1B1B;
+    font-family: Pretendard;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    white-space: normal;
+}
+
+
 
 .overlay_info:after {
     content: '';
